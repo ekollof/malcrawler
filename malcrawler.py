@@ -18,7 +18,6 @@ from gsb import client
 from pprint import pprint
 from gsb import datastore
 from bs4 import BeautifulSoup
-from selenium import webdriver
 from spam.surbl import SurblChecker
 from spam.spamhaus import SpamHausChecker
 
@@ -201,28 +200,6 @@ def check_safebrowse(url):
 
     return ret
 
-def js_click(url, urllist, urlindex):
-
-    # crap, a javascript redirect. Whip out selenium
-    print "JS: %s" % url
-    driver = webdriver.PhantomJS()
-
-    prevurl = urls[urlindex - 1]
-    print "JS: Loading %s first for context." % prevurl
-    # get previous page for context
-    driver.get(prevurl)
-    # wait for page load
-    while prevurl == driver.current_url:
-        time.sleep(2)
-
-    # get js link
-    driver.get(url)
-    while url == driver.current_url:
-        time.sleep(2)
-
-    url = driver.current_url
-    print "Javascript url resolved into %s" % url
-
 def extract_urls(r, hostinfo):
 
     global urlsseen
@@ -339,7 +316,6 @@ def recurse_url(urls, domain):
                 continue
 
             if url.startswith('javascript:'):
-                js_click(url, urls, urlindex)
                 continue
 
 
