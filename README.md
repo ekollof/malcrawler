@@ -17,4 +17,4 @@ TODO:
 - Maybe split out safebrowse logic in a server part so it can stay running and doesn't need to reinitialize every time.
 - Robuster crawling
 - Unicode niggles.
-
+- Proper handling of Ctrl-C
