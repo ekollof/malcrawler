@@ -13,7 +13,7 @@ Prerequisites
 TODO:
 ======
 
-- Maybe split out safebrowse logic in a sever part so it can stay running and doesn't need to reinitialize every time.
+- Maybe split out safebrowse logic in a server part so it can stay running and doesn't need to reinitialize every time.
 - Robuster crawling
 - Unicode niggles.
 
